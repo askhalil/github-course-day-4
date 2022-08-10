@@ -1,0 +1,14 @@
+name: PR Comment
+
+on:
+  pull_request:
+    branches: ["*"]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          gh pr comment $PR_NUMBER --body "Hi from GitHub CLI"
