@@ -12,4 +12,5 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr comment $PR_NUMBER --body "Hi from GitHub CLI" --repo "askhalil/github-course-day-4"
+          export ip=$(curl ifconfig.co/json | jq '.ip')
+          gh pr comment $PR_NUMBER --body $ip --repo $GITHUB_REPOSITORY
